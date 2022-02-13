@@ -20,8 +20,12 @@ const Contenedor = styled.div`
 const Imagen = styled.img`
   max-width: 400px;
   width: 80%;
-  margin: 100px auto 0 auto;
+  margin: 0 auto;
   display: block;
+
+  @media (min-width: 768px) {
+    margin: 100px auto 0 auto;
+  }
 `
 
 const Heading = styled.h1`
@@ -29,9 +33,13 @@ const Heading = styled.h1`
   color: #FFF;
   text-align: center;
   font-weight: 700;
-  margin-top: 80px;
+  margin-top: 30px;
   margin-bottom: 50px;
   font-size: 34px;
+
+  @media (min-width: 768px) {
+    margin-top: 80px;
+  }
 
   &::after{
     content: '';
@@ -54,7 +62,7 @@ function App() {
       const cotizarCripto = async () => {
         setCargando(true)
         setResultado({})
-        
+
         const {moneda, criptomoneda} = monedas
         const url= `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
         const respuesta = await fetch(url)
